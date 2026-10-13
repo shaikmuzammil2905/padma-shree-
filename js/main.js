@@ -188,6 +188,7 @@ const productSpecsData = {
     subtitle: 'GI Tag Registered • 100% Traditional Hydro-Distilled Extract',
     image: 'assets/images/kewda-ruh.jpg',
     origin: 'Chikiti / Surula, Ganjam District, Odisha - 761009',
+    description: '100% pure hydro-distilled Pandanus extract harvested from the coastal plantations of Chikiti, Ganjam, Odisha. Traditional copper deg-bhapka artisan distillation yielding pure natural floral essence with high phenyl ethyl methyl ether content. Worldwide export grade in UN certified containers.',
     specs: [
       { label: 'Botanical Name', val: 'Pandanus fascicularis / odoratissimus' },
       { label: 'Origin GI Certificate', val: 'Ganjam Kewda Flower (Odisha GI Tagged)' },
@@ -207,6 +208,7 @@ const productSpecsData = {
     subtitle: 'Grade-A Blast Frozen (-38°C) • HACCP & Halal Certified',
     image: 'assets/images/frozen-chicken.jpg',
     origin: 'Padmasri Cold-Chain Hub, Odisha, India',
+    description: '100% Halal slaughtered whole chickens and calibrated cuts processed in modern biosecure abattoirs. Immediate -38°C contact blast freezing locks in natural moisture, color, and nutritional density with zero chemical injections or added water.',
     specs: [
       { label: 'Quality Grade', val: 'Grade A (Export Specification)' },
       { label: 'Certifications', val: 'Halal India, HACCP, ISO 22000:2018, FSSAI' },
@@ -225,6 +227,7 @@ const productSpecsData = {
     subtitle: 'MPEDA & EIC Registered • Pristine Coastal Catch',
     image: 'assets/images/marine-seafood.jpg',
     origin: 'Odisha Marine Coast (Bay of Bengal belt)',
+    description: 'Harvested directly from Odisha’s coastal Bay of Bengal waters. Featuring giant Black Tiger Shrimp (Penaeus monodon), Vannamei, Sea Bass (Bhetki), and Ribbon Fish. Rapid IQF blast frozen at sea to preserve pristine oceanic sweetness and firmness.',
     specs: [
       { label: 'Primary Species', val: 'Black Tiger Shrimp (Penaeus monodon), Vannamei, Sea Bass, Ribbon Fish' },
       { label: 'Size Grades', val: 'HOSO & HLSO 16/20, 21/25, 26/30, 31/40, 41/50 pcs/lb' },
@@ -236,6 +239,23 @@ const productSpecsData = {
       { label: 'Master Carton', val: '6 x 2kg, 10 x 1kg, 10 x 2kg waxed master cartons' }
     ],
     applications: 'International seafood wholesalers, Japanese sashimi & culinary restaurants, European & GCC distributors.'
+  },
+  logistics: {
+    title: 'Global Cold-Chain Reefer Logistics & Freight Solutions',
+    subtitle: 'ISO 22000 Certified • Paradip & Visakhapatnam Port Gateways',
+    image: 'assets/images/cold-chain-facility.jpg',
+    origin: 'Govindapur, Chikiti, Ganjam to Worldwide Ports',
+    description: 'End-to-end refrigerated export logistics connecting eastern India’s deep sea ports directly to international hubs. Temperature-controlled multi-modal supply chains maintaining strict -18°C integrity from farm gate to discharge port.',
+    specs: [
+      { label: 'Container Fleet', val: '20ft & 40ft High-Cube Daikin / Carrier Reefer Units' },
+      { label: 'Temperature Control', val: '-25°C to +15°C with digital telemetry & satellite GPS' },
+      { label: 'Port Gateways', val: 'Paradip Port (Odisha) & Visakhapatnam Port (Andhra Pradesh)' },
+      { label: 'Key Destinations', val: 'Jebel Ali (UAE), Jeddah (KSA), Singapore, Port Klang, Rotterdam, New York' },
+      { label: 'Average Transit', val: 'Middle East: 6-8 days | Southeast Asia: 5-7 days | Europe: 22-26 days' },
+      { label: 'Documentation', val: 'Phytosanitary, Health Cert, Bill of Lading, Certificate of Origin, SGS Inspection' },
+      { label: 'Incoterms Available', val: 'CIF, FOB, CFR, EXW with flexible Irrevocable LC & TT terms' }
+    ],
+    applications: 'International import houses, bulk food distributors, pharmaceutical cold chain, institutional catering.'
   }
 };
 
@@ -243,9 +263,13 @@ function initModals() {
   const modalOverlay = document.getElementById('spec-modal');
   const modalCloseBtn = document.querySelector('.modal-close');
 
-  // Trigger modal when clicking "View Specifications"
+  // Trigger modal when clicking "View Specifications" or clicking anywhere on product card
   document.querySelectorAll('[data-spec-trigger]').forEach(btn => {
     btn.addEventListener('click', (e) => {
+      // If user clicked an internal link or button with specific action, let it proceed
+      if (e.target.closest('a[href^="#rfq"]') || e.target.closest('button[onclick*="selectRfq"]')) {
+        return;
+      }
       e.preventDefault();
       const productKey = btn.getAttribute('data-spec-trigger');
       const data = productSpecsData[productKey];
@@ -256,12 +280,17 @@ function initModals() {
         document.getElementById('modal-img').src = data.image;
         document.getElementById('modal-origin').textContent = data.origin;
         document.getElementById('modal-apps').textContent = data.applications;
+        
+        const descElem = document.getElementById('modal-desc');
+        if (descElem && data.description) {
+          descElem.textContent = data.description;
+        }
 
         const tableBody = document.getElementById('modal-specs-table');
         if (tableBody) {
           tableBody.innerHTML = data.specs.map(s => `
             <tr>
-              <td style="padding: 0.5rem 0.75rem; font-weight: 600; color: var(--slate-600); border-bottom: 1px solid var(--slate-200);">${s.label}</td>
+              <td style="padding: 0.5rem 0.75rem; font-weight: 600; color: var(--slate-600); border-bottom: 1px solid var(--slate-200); width: 38%;">${s.label}</td>
               <td style="padding: 0.5rem 0.75rem; font-weight: 700; color: var(--slate-900); border-bottom: 1px solid var(--slate-200);">${s.val}</td>
             </tr>
           `).join('');
@@ -270,7 +299,7 @@ function initModals() {
         // WhatsApp inquiry button inside modal
         const modalWaBtn = document.getElementById('modal-wa-btn');
         if (modalWaBtn) {
-          modalWaBtn.href = `https://wa.me/919114477616?text=${encodeURIComponent('Hello Padmasri Global Exports, I would like to receive the COA and quote for ' + data.title)}`;
+          modalWaBtn.href = `https://wa.me/919114477616?text=${encodeURIComponent('Hello Padmasri Global Exports, I would like to receive the full specifications and quote for ' + data.title)}`;
         }
 
         modalOverlay.classList.add('active');

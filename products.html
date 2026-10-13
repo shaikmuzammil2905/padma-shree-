@@ -38,7 +38,15 @@
         <ul class="nav-menu">
           <li><a href="index.html" class="nav-link">Home</a></li>
           <li><a href="about.html" class="nav-link">About Us</a></li>
-          <li><a href="products.html" class="nav-link active">Our Products</a></li>
+          <li class="nav-dropdown">
+            <a href="products.html" class="nav-link active nav-dropdown-toggle">Our Products <i class="fa fa-chevron-down"></i></a>
+            <ul class="nav-dropdown-menu">
+              <li><a href="products.html#kewda" class="nav-dropdown-item"><i class="fa fa-spa"></i> Pure Kewda Ruh</a></li>
+              <li><a href="products.html#chicken" class="nav-dropdown-item"><i class="fa fa-drumstick-bite"></i> Frozen Halal Chicken</a></li>
+              <li><a href="products.html#seafood" class="nav-dropdown-item"><i class="fa fa-shrimp"></i> Marine Seafood</a></li>
+              <li><a href="products.html#logistics" class="nav-dropdown-item"><i class="fa fa-ship"></i> Cold-Chain Logistics</a></li>
+            </ul>
+          </li>
           <li><a href="index.html#cold-chain" class="nav-link">Cold Chain</a></li>
           <li><a href="certifications.html" class="nav-link">Certifications</a></li>
           <li><a href="contact.html" class="nav-link">Contact Us</a></li>
@@ -199,9 +207,117 @@
     </div>
   </section>
 
+  <!-- SECTOR 4: COLD CHAIN & REEFER LOGISTICS -->
+  <section class="section section-bg-light" id="logistics">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-info">
+          <span class="badge badge-green" style="margin-bottom: 0.75rem;"><i class="fa fa-snowflake"></i> IoT Telemetry • -18°C Guaranteed</span>
+          <h2 class="about-title">Cold-Chain Reefer Logistics &amp; Shipping Infrastructure</h2>
+          <p class="about-lead">
+            End-to-end refrigerated intermodal logistics connecting Odisha's processing hubs directly to deep-water container berths at Paradip and Visakhapatnam ports.
+          </p>
+          <p class="about-text">
+            We operate Carrier Transicold and Thermo King 40ft High-Cube reefer containers equipped with real-time satellite IoT temperature loggers. Every shipment maintains continuous thermal integrity from dockside to overseas discharge ports.
+          </p>
+
+          <div style="background: var(--white); border-radius: var(--radius-md); padding: 1.25rem; border: 1px solid var(--slate-200); margin: 1.5rem 0;">
+            <h4 style="color: var(--primary-blue); font-size: 1.05rem; margin-bottom: 0.75rem;"><i class="fa fa-ship"></i> Reefer Logistics Capabilities</h4>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-size: 0.85rem;">
+              <div><strong>Thermal Range:</strong> -25°C to +15°C Controllable</div>
+              <div><strong>Container Specs:</strong> 40ft HC &amp; 20ft ISO Reefer</div>
+              <div><strong>Monitoring:</strong> 24/7 Cloud GPS &amp; Temp Log</div>
+              <div><strong>Export Ports:</strong> Paradip (PPT) &amp; Vizag (VPT)</div>
+              <div><strong>Pre-Cooling:</strong> -40°C Cryogenic Blast Tunnels</div>
+              <div><strong>Export Markets:</strong> GCC, SE Asia, Europe, USA</div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="https://wa.me/919114477616?text=Hello%20Padmasri%20Global%20Exports,%20I%20am%20inquiring%20about%20Cold-Chain%20Reefer%20shipping%20and%20container%20allocations." target="_blank" rel="noopener" class="btn btn-whatsapp">
+              <i class="fab fa-whatsapp"></i> Inquire on WhatsApp
+            </a>
+            <a href="contact.html" class="btn btn-primary">
+              <i class="fa fa-file-invoice"></i> Inquire Freight Allocation
+            </a>
+          </div>
+        </div>
+
+        <div class="about-visual">
+          <div class="about-image-main">
+            <img src="assets/images/cold-chain.jpg" alt="Padmasri Cold Chain Reefer Shipping Containers">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOATING ACTION BUTTONS -->
+  <aside class="floating-actions">
+    <a href="https://wa.me/919114477616?text=Hello%20Padmasri%20Global%20Exports,%20I%20am%20interested%20in%20your%20products." target="_blank" rel="noopener" class="float-btn float-whatsapp" aria-label="Chat on WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="tel:+919114477616" class="float-btn float-call" aria-label="Call Trade Line">
+      <i class="fa fa-phone-alt"></i>
+    </a>
+    <button class="float-btn float-top" aria-label="Scroll to top" id="scroll-to-top-btn">
+      <i class="fa fa-arrow-up"></i>
+    </button>
+  </aside>
+
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/images/logo-white.png" alt="Padmasri Global Exports Logo" width="170" height="68">
+          <p>
+            Padmasri Global Exports &amp; Enterprises is an established international merchant exporter operating for 7 to 8 years. Specializing in pure Ganjam Kewda Ruh, certified frozen Halal chicken, and pristine coastal Bay of Bengal marine seafood.
+          </p>
+          <div style="display: flex; gap: 0.65rem;">
+            <a href="https://wa.me/919114477616" target="_blank" rel="noopener" class="btn btn-whatsapp btn-sm"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="tel:+919114477616" class="btn btn-outline-white btn-sm"><i class="fa fa-phone"></i> Call Now</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Export Catalog</h4>
+          <ul class="footer-links">
+            <li><a href="products.html#kewda"><i class="fa fa-angle-right"></i> Pure Kewda Ruh</a></li>
+            <li><a href="products.html#chicken"><i class="fa fa-angle-right"></i> Frozen Whole Halal Chicken</a></li>
+            <li><a href="products.html#seafood"><i class="fa fa-angle-right"></i> Black Tiger Shrimp</a></li>
+            <li><a href="products.html#logistics"><i class="fa fa-angle-right"></i> Cold-Chain Reefer Logistics</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fa fa-angle-right"></i> Home</a></li>
+            <li><a href="about.html"><i class="fa fa-angle-right"></i> About Us (7-8 Years)</a></li>
+            <li><a href="products.html"><i class="fa fa-angle-right"></i> Technical Specifications</a></li>
+            <li><a href="certifications.html"><i class="fa fa-angle-right"></i> Certifications &amp; GI Tag</a></li>
+            <li><a href="contact.html"><i class="fa fa-angle-right"></i> Contact &amp; Location</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Head Office Address</h4>
+          <p style="font-size: 0.9rem; color: #CBD5E1; margin-bottom: 0.75rem;">
+            <strong>Padmasri Global Exports</strong><br>
+            At: Govindapur, P.O: Surula,<br>
+            Block: Chikiti, Ganjam - 761009,<br>
+            Odisha, India.
+          </p>
+          <p style="font-size: 0.9rem; color: #CBD5E1; margin-bottom: 0.35rem;">
+            <i class="fa fa-phone" style="color: var(--emerald-mint);"></i> +91 9114477616
+          </p>
+          <p style="font-size: 0.9rem; color: #CBD5E1;">
+            <i class="fa fa-envelope" style="color: var(--emerald-mint);"></i> nakachiranjivireddy@gmail.com
+          </p>
+        </div>
+      </div>
+
       <div class="footer-bottom">
         <div>&copy; 2018–2026 Padmasri Global Exports &amp; Enterprises. All Rights Reserved.</div>
         <div>Chikiti, Ganjam - 761009, Odisha, India | Phone: +91 9114477616</div>

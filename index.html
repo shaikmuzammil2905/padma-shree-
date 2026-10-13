@@ -262,13 +262,14 @@
         <button class="tab-btn" data-filter="kewda"><i class="fa fa-spa"></i> Kewda Ruh &amp; Floral</button>
         <button class="tab-btn" data-filter="poultry"><i class="fa fa-drumstick-bite"></i> Frozen Chicken</button>
         <button class="tab-btn" data-filter="seafood"><i class="fa fa-shrimp"></i> Marine Seafood</button>
+        <button class="tab-btn" data-filter="logistics"><i class="fa fa-ship"></i> Cold-Chain Logistics</button>
       </div>
 
       <!-- Products Grid -->
       <div class="products-grid">
 
         <!-- Product 1: Kewda Ruh -->
-        <article class="product-card" data-category="kewda" id="card-kewda">
+        <article class="product-card" data-category="kewda" data-spec-trigger="kewda" id="card-kewda" title="Click to view details & specifications">
           <div class="product-thumb">
             <img src="assets/images/kewda-ruh.jpg" alt="Pure Ganjam Kewda Ruh Extract" loading="lazy">
             <div class="product-badge-overlay">
@@ -308,7 +309,7 @@
               <button class="btn btn-outline btn-sm" data-spec-trigger="kewda" id="btn-spec-kewda">
                 <i class="fa fa-microscope"></i> Tech Specs
               </button>
-              <a href="#rfq-section" class="btn btn-accent btn-sm" onclick="selectRfqProduct('kewda')">
+              <a href="#rfq-section" class="btn btn-accent btn-sm" onclick="event.stopPropagation(); selectRfqProduct('kewda')">
                 <i class="fa fa-paper-plane"></i> Get Quote
               </a>
             </div>
@@ -316,7 +317,7 @@
         </article>
 
         <!-- Product 2: Frozen Chicken -->
-        <article class="product-card" data-category="poultry" id="card-poultry">
+        <article class="product-card" data-category="poultry" data-spec-trigger="chicken" id="card-poultry" title="Click to view details & specifications">
           <div class="product-thumb">
             <img src="assets/images/frozen-chicken.jpg" alt="Halal Certified Frozen Chicken and Cuts" loading="lazy">
             <div class="product-badge-overlay">
@@ -356,7 +357,7 @@
               <button class="btn btn-outline btn-sm" data-spec-trigger="chicken" id="btn-spec-chicken">
                 <i class="fa fa-microscope"></i> Tech Specs
               </button>
-              <a href="#rfq-section" class="btn btn-accent btn-sm" onclick="selectRfqProduct('chicken')">
+              <a href="#rfq-section" class="btn btn-accent btn-sm" onclick="event.stopPropagation(); selectRfqProduct('chicken')">
                 <i class="fa fa-paper-plane"></i> Get Quote
               </a>
             </div>
@@ -364,7 +365,7 @@
         </article>
 
         <!-- Product 3: Marine Seafood -->
-        <article class="product-card" data-category="seafood" id="card-seafood">
+        <article class="product-card" data-category="seafood" data-spec-trigger="seafood" id="card-seafood" title="Click to view details & specifications">
           <div class="product-thumb">
             <img src="assets/images/marine-seafood.jpg" alt="Bay of Bengal Marine Seafood and Black Tiger Shrimp" loading="lazy">
             <div class="product-badge-overlay">
@@ -404,7 +405,55 @@
               <button class="btn btn-outline btn-sm" data-spec-trigger="seafood" id="btn-spec-seafood">
                 <i class="fa fa-microscope"></i> Tech Specs
               </button>
-              <a href="#rfq-section" class="btn btn-accent btn-sm" onclick="selectRfqProduct('seafood')">
+              <a href="#rfq-section" class="btn btn-accent btn-sm" onclick="event.stopPropagation(); selectRfqProduct('seafood')">
+                <i class="fa fa-paper-plane"></i> Get Quote
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 4: Cold-Chain Logistics -->
+        <article class="product-card" data-category="logistics" data-spec-trigger="logistics" id="card-logistics" title="Click to view details & specifications">
+          <div class="product-thumb">
+            <img src="assets/images/cold-chain-facility.jpg" alt="Cold Chain Reefer Logistics Facility" loading="lazy">
+            <div class="product-badge-overlay">
+              <span class="badge badge-green"><i class="fa fa-snowflake"></i> ISO 22000 Certified</span>
+            </div>
+            <div class="product-temp-tag">
+              <i class="fa fa-temperature-low"></i> -18°C Monitored
+            </div>
+          </div>
+          <div class="product-content">
+            <span class="product-category">Cold-Chain Reefer Logistics</span>
+            <h3 class="product-title">Global Reefer Logistics &amp; Freight Services</h3>
+            <p class="product-desc">
+              Integrated temperature-controlled supply chains linking eastern India's deep sea ports (Paradip &amp; Visakhapatnam) directly to global discharge destinations across GCC, Southeast Asia, Europe, and Americas.
+            </p>
+
+            <div class="product-specs-list">
+              <div class="product-spec-row">
+                <span class="spec-key">Container Fleet</span>
+                <span class="spec-val">20ft &amp; 40ft HQ Daikin Reefers</span>
+              </div>
+              <div class="product-spec-row">
+                <span class="spec-key">Loading Ports</span>
+                <span class="spec-val">Paradip Port &amp; Vizag Port</span>
+              </div>
+              <div class="product-spec-row">
+                <span class="spec-key">Temp Stability</span>
+                <span class="spec-val">-25°C to +15°C Telemetry</span>
+              </div>
+              <div class="product-spec-row">
+                <span class="spec-key">Certificates</span>
+                <span class="spec-val">Phytosanitary, Health &amp; BL</span>
+              </div>
+            </div>
+
+            <div class="product-footer-actions">
+              <button class="btn btn-outline btn-sm" data-spec-trigger="logistics" id="btn-spec-logistics">
+                <i class="fa fa-microscope"></i> Tech Specs
+              </button>
+              <a href="#rfq-section" class="btn btn-accent btn-sm" onclick="event.stopPropagation(); selectRfqProduct('chicken')">
                 <i class="fa fa-paper-plane"></i> Get Quote
               </a>
             </div>
@@ -863,40 +912,51 @@
     </div>
   </section>
 
-  <!-- PRODUCT SPECIFICATIONS MODAL -->
+  <!-- PRODUCT SPECIFICATIONS MODAL WITH PICTORIAL REPRESENTATION -->
   <div class="modal-overlay" id="spec-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal-content">
       <button class="modal-close" aria-label="Close modal">&times;</button>
       
-      <div style="display: flex; gap: 1.25rem; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid var(--slate-200); padding-bottom: 1.25rem;">
-        <img id="modal-img" src="assets/images/kewda-ruh.jpg" alt="Commodity Thumbnail" style="width: 90px; height: 90px; border-radius: var(--radius-md); object-fit: cover;">
-        <div>
-          <span class="badge badge-green" id="modal-origin">Chikiti, Ganjam, Odisha</span>
-          <h3 id="modal-title" style="font-size: 1.45rem; color: var(--primary-blue); margin-top: 0.35rem;">Technical Specification Sheet</h3>
-          <p id="modal-subtitle" style="font-size: 0.85rem; color: var(--slate-600); margin: 0;">Export Grade Laboratory Data</p>
+      <!-- Prominent Pictorial Representation Banner -->
+      <div class="modal-banner" style="position: relative; width: 100%; height: 230px; border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 1.25rem; box-shadow: var(--shadow-md);">
+        <img id="modal-img" src="assets/images/kewda-ruh.jpg" alt="Commodity Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(0deg, rgba(10, 37, 64, 0.95) 0%, rgba(10, 37, 64, 0.6) 65%, transparent 100%); padding: 1.25rem 1.5rem;">
+          <span class="badge badge-green" id="modal-origin"><i class="fa fa-map-marker-alt"></i> Chikiti, Ganjam, Odisha</span>
+          <h3 id="modal-title" style="font-size: 1.5rem; color: #ffffff; margin-top: 0.35rem; line-height: 1.2;">Ganjam Kewda Ruh</h3>
+          <p id="modal-subtitle" style="font-size: 0.875rem; color: #6EE7B7; margin: 0; font-weight: 600;">GI Tag Registered • 100% Traditional Hydro-Distilled Extract</p>
         </div>
       </div>
 
-      <div style="margin-bottom: 1.5rem;">
-        <h4 style="font-size: 1rem; color: var(--primary-blue); margin-bottom: 0.75rem;"><i class="fa fa-table"></i> Verified Chemical / Physical Parameters</h4>
-        <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+      <!-- Related Content Overview -->
+      <div style="margin-bottom: 1.25rem;">
+        <h4 style="font-size: 1rem; color: var(--primary-blue); margin-bottom: 0.35rem;"><i class="fa fa-info-circle" style="color: var(--primary-green);"></i> Commodity Overview &amp; Sourcing</h4>
+        <p id="modal-desc" style="font-size: 0.88rem; color: var(--slate-600); line-height: 1.6; margin: 0;">
+          Direct-source export commodity rigorously tested for purity, microbiological standards, and international compliance.
+        </p>
+      </div>
+
+      <!-- Verified Parameters Table -->
+      <div style="margin-bottom: 1.25rem;">
+        <h4 style="font-size: 1rem; color: var(--primary-blue); margin-bottom: 0.65rem;"><i class="fa fa-table" style="color: var(--primary-green);"></i> Verified Technical &amp; Export Specifications</h4>
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; background: var(--slate-50); border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--slate-200);">
           <tbody id="modal-specs-table">
             <!-- Dynamically populated -->
           </tbody>
         </table>
       </div>
 
-      <div style="background: var(--slate-50); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--slate-200); margin-bottom: 1.5rem;">
-        <h5 style="font-size: 0.85rem; color: var(--primary-blue); margin-bottom: 0.3rem;"><i class="fa fa-lightbulb"></i> Primary Commercial Applications:</h5>
-        <p id="modal-apps" style="font-size: 0.825rem; color: var(--slate-600); margin: 0;"></p>
+      <!-- Commercial Applications -->
+      <div style="background: var(--slate-50); padding: 1rem 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--slate-200); margin-bottom: 1.5rem;">
+        <h5 style="font-size: 0.85rem; color: var(--primary-blue); margin-bottom: 0.3rem;"><i class="fa fa-lightbulb" style="color: var(--accent-gold);"></i> Commercial &amp; Culinary Applications:</h5>
+        <p id="modal-apps" style="font-size: 0.825rem; color: var(--slate-600); margin: 0; line-height: 1.5;"></p>
       </div>
 
-      <div style="display: flex; gap: 0.75rem;">
-        <a id="modal-wa-btn" href="#" target="_blank" rel="noopener" class="btn btn-whatsapp" style="flex: 1;">
-          <i class="fab fa-whatsapp"></i> Inquire This Commodity
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+        <a id="modal-wa-btn" href="#" target="_blank" rel="noopener" class="btn btn-whatsapp" style="flex: 1; min-width: 190px;">
+          <i class="fab fa-whatsapp"></i> Inquire on WhatsApp
         </a>
-        <a href="#rfq-section" class="btn btn-primary" onclick="document.getElementById('spec-modal').classList.remove('active')" style="flex: 1;">
-          <i class="fa fa-file-invoice"></i> Request RFQ
+        <a href="#rfq-section" class="btn btn-primary" onclick="document.getElementById('spec-modal').classList.remove('active')" style="flex: 1; min-width: 180px;">
+          <i class="fa fa-file-invoice"></i> Request Export RFQ
         </a>
       </div>
     </div>
@@ -922,7 +982,7 @@
         
         <!-- Col 1: Brand Info -->
         <div class="footer-brand">
-          <img src="assets/images/logo.png" alt="Padmasri Global Exports Logo" width="170" height="68">
+          <img src="assets/images/logo-white.png" alt="Padmasri Global Exports Logo" width="170" height="68">
           <p>
             Padmasri Global Exports &amp; Enterprises is an established international merchant exporter operating for 7 to 8 years. Specializing in pure Ganjam Kewda Ruh, certified frozen Halal chicken, and pristine coastal Bay of Bengal marine seafood.
           </p>
