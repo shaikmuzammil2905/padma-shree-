@@ -175,10 +175,53 @@
   <section class="section section-bg-white" id="about-section">
     <div class="container">
       <div class="about-grid">
-        <div class="about-visual">
-          <div class="about-image-main">
-            <img src="assets/images/cold-chain-facility.jpg" alt="Padmasri Global Exports Cold Storage and Inspection Hub" loading="lazy">
+        <div class="about-visual grand-slide-entry" id="about-visual-showcase">
+          <div class="about-image-main grand-image-frame">
+            <!-- Grand Badge / Luxury Tag -->
+            <div class="grand-badge-tag">
+              <i class="fa fa-award"></i> World-Class Export Infrastructure
+            </div>
+
+            <!-- Grand Sliding Showcase Track -->
+            <div class="grand-slider-track" id="grand-slider-track">
+              <!-- Slide 1: Grand Exterior Maritime & Logistics Hub -->
+              <div class="grand-slide active">
+                <img src="assets/images/padmasri-export-hub.jpg" alt="Padmasri Global Exports - Cold Storage & Logistics Hub - International Seafood & Agricultural Terminal" loading="lazy">
+                <div class="grand-slide-caption">
+                  <span class="slide-caption-title"><i class="fa fa-ship"></i> International Cold Storage &amp; Maritime Logistics Hub</span>
+                  <span class="slide-caption-sub">Deep-Sea Terminal Operations • Paradip &amp; Visakhapatnam Trade Corridors</span>
+                </div>
+              </div>
+
+              <!-- Slide 2: Grand Interior -18°C Automated Cold Chain & Inspection Deck -->
+              <div class="grand-slide">
+                <img src="assets/images/padmasri-cold-storage-interior.jpg" alt="Padmasri Global Exports - Cold Chain Technology -18°C Automated Facility" loading="lazy">
+                <div class="grand-slide-caption">
+                  <span class="slide-caption-title"><i class="fa fa-snowflake"></i> Certified -18°C Automated Cold Storage</span>
+                  <span class="slide-caption-sub">Digital Temperature Telemetry • Export Quality Inspection Bays</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Grand Navigation Controls (Left & Right Side Slide) -->
+            <button class="grand-slider-nav prev" id="slider-prev-btn" aria-label="Previous Slide">
+              <i class="fa fa-chevron-left"></i>
+            </button>
+            <button class="grand-slider-nav next" id="slider-next-btn" aria-label="Next Slide">
+              <i class="fa fa-chevron-right"></i>
+            </button>
+
+            <!-- Grand Slide Indicators -->
+            <div class="grand-slider-dots" id="slider-dots">
+              <button class="grand-dot active" data-slide="0" aria-label="Slide 1: Maritime Export Terminal"></button>
+              <button class="grand-dot" data-slide="1" aria-label="Slide 2: Cold Chain Facility"></button>
+            </div>
+
+            <!-- Luxury Light Sheen Sweep Effect -->
+            <div class="grand-sheen-sweep"></div>
           </div>
+
+          <!-- Floating 7-8 Years Experience Badge -->
           <div class="about-badge-floating">
             <div class="badge-float-icon"><i class="fa fa-shield-halved"></i></div>
             <div class="badge-float-text">
@@ -415,7 +458,7 @@
         <!-- Product 4: Cold-Chain Logistics -->
         <article class="product-card" data-category="logistics" data-spec-trigger="logistics" id="card-logistics" title="Click to view details & specifications">
           <div class="product-thumb">
-            <img src="assets/images/cold-chain-facility.jpg" alt="Cold Chain Reefer Logistics Facility" loading="lazy">
+            <img src="assets/images/padmasri-export-hub.jpg" alt="Cold Chain Reefer Logistics Facility" loading="lazy">
             <div class="product-badge-overlay">
               <span class="badge badge-green"><i class="fa fa-snowflake"></i> ISO 22000 Certified</span>
             </div>

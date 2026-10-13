@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initRfqCalculator();
   initModals();
   initContactForm();
+  initGrandShowcase();
 });
 
 /* Mobile Menu Toggle - Immediate 0ms Touch Response */
@@ -266,7 +267,7 @@ const productSpecsData = {
   logistics: {
     title: 'Global Cold-Chain Reefer Logistics & Freight Solutions',
     subtitle: 'ISO 22000 Certified • Paradip & Visakhapatnam Port Gateways',
-    image: 'assets/images/cold-chain-facility.jpg',
+    image: 'assets/images/padmasri-export-hub.jpg',
     origin: 'Govindapur, Chikiti, Ganjam to Worldwide Ports',
     description: 'End-to-end refrigerated export logistics connecting eastern India’s deep sea ports directly to international hubs. Temperature-controlled multi-modal supply chains maintaining strict -18°C integrity from farm gate to discharge port.',
     specs: [
@@ -406,3 +407,134 @@ function showToast(message, type = 'success') {
     toast.classList.remove('show');
   }, 4000);
 }
+
+/* Grand Side-Slide Showcase & Viewport Observer */
+function initGrandShowcase() {
+  const showcaseVisuals = document.querySelectorAll('.grand-slide-entry');
+
+  if (showcaseVisuals.length) {
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            entry.target.classList.add('js-ready');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
+
+      showcaseVisuals.forEach(visual => {
+        visual.classList.add('js-ready');
+        observer.observe(visual);
+      });
+    } else {
+      showcaseVisuals.forEach(visual => visual.classList.add('in-view'));
+    }
+  }
+
+  // Interactive Grand Slider
+  const track = document.getElementById('grand-slider-track');
+  const prevBtn = document.getElementById('slider-prev-btn');
+  const nextBtn = document.getElementById('slider-next-btn');
+  const dots = document.querySelectorAll('.grand-dot');
+
+  if (!track) return;
+
+  const slides = track.querySelectorAll('.grand-slide');
+  const totalSlides = slides.length;
+  if (totalSlides <= 1) return;
+
+  let currentIndex = 0;
+  let autoSlideTimer = null;
+
+  function updateSlider(index) {
+    currentIndex = (index + totalSlides) % totalSlides;
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === currentIndex);
+    });
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentIndex);
+    });
+  }
+
+  function nextSlide() {
+    updateSlider(currentIndex + 1);
+  }
+
+  function prevSlide() {
+    updateSlider(currentIndex - 1);
+  }
+
+  function startAutoSlide() {
+    stopAutoSlide();
+    autoSlideTimer = setInterval(nextSlide, 5200);
+  }
+
+  function stopAutoSlide() {
+    if (autoSlideTimer) {
+      clearInterval(autoSlideTimer);
+      autoSlideTimer = null;
+    }
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      nextSlide();
+      startAutoSlide();
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      prevSlide();
+      startAutoSlide();
+    });
+  }
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', (e) => {
+      e.preventDefault();
+      const slideIdx = parseInt(dot.getAttribute('data-slide'), 10) || 0;
+      updateSlider(slideIdx);
+      startAutoSlide();
+    });
+  });
+
+  // Touch Swipe for mobile devices
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  track.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+    stopAutoSlide();
+  }, { passive: true });
+
+  track.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    }
+    startAutoSlide();
+  }, { passive: true });
+
+  // Pause on hover
+  const frame = track.closest('.about-image-main');
+  if (frame) {
+    frame.addEventListener('mouseenter', stopAutoSlide);
+    frame.addEventListener('mouseleave', startAutoSlide);
+  }
+
+  startAutoSlide();
+}
+
