@@ -12,32 +12,55 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
 });
 
-/* Mobile Menu Toggle */
+/* Mobile Menu Toggle - Immediate 0ms Touch Response */
 function initMobileMenu() {
   const toggleBtn = document.querySelector('.mobile-toggle');
   const navMenu = document.querySelector('.nav-menu');
 
   if (toggleBtn && navMenu) {
-    toggleBtn.addEventListener('click', () => {
+    let lastActionTime = 0;
+
+    const toggleMenu = (e) => {
+      const now = Date.now();
+      if (now - lastActionTime < 200) return; // Debounce rapid multi-events
+      lastActionTime = now;
+
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+
       navMenu.classList.toggle('open');
       const isOpen = navMenu.classList.contains('open');
+      document.body.classList.toggle('mobile-menu-active', isOpen);
       toggleBtn.innerHTML = isOpen ? '<i class="fa fa-times"></i>' : '<i class="fa fa-bars"></i>';
       toggleBtn.setAttribute('aria-expanded', isOpen);
+    };
+
+    // Fast pointerdown for immediate 0ms reaction on mobile screens
+    toggleBtn.addEventListener('pointerdown', toggleMenu, { passive: false });
+    toggleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (Date.now() - lastActionTime > 200) toggleMenu(e);
     });
 
-    // Close when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!toggleBtn.contains(e.target) && !navMenu.contains(e.target)) {
+    // Close when tapping outside
+    document.addEventListener('pointerdown', (e) => {
+      if (navMenu.classList.contains('open') && !toggleBtn.contains(e.target) && !navMenu.contains(e.target)) {
         navMenu.classList.remove('open');
+        document.body.classList.remove('mobile-menu-active');
         toggleBtn.innerHTML = '<i class="fa fa-bars"></i>';
+        toggleBtn.setAttribute('aria-expanded', 'false');
       }
     });
 
-    // Close on link click
+    // Close on link click immediately
     navMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('open');
+        document.body.classList.remove('mobile-menu-active');
         toggleBtn.innerHTML = '<i class="fa fa-bars"></i>';
+        toggleBtn.setAttribute('aria-expanded', 'false');
       });
     });
   }
