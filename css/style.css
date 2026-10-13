@@ -236,13 +236,15 @@ ul {
 }
 
 .brand-logo img {
-  height: 54px;
+  height: 64px;
   width: auto;
+  max-width: 190px;
+  object-fit: contain;
   transition: transform var(--transition-fast);
 }
 
 .brand-logo:hover img {
-  transform: scale(1.02);
+  transform: scale(1.03);
 }
 
 .nav-menu {
@@ -1628,11 +1630,14 @@ ul {
 }
 
 .footer-brand img {
-  height: 52px;
+  height: 68px;
+  width: auto;
+  max-width: 170px;
   margin-bottom: 1.25rem;
   background: #FFFFFF;
   padding: 6px 12px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
+  object-fit: contain;
 }
 
 .footer-brand p {
