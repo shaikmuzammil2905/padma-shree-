@@ -1992,13 +1992,6 @@ ul {
     display: none;
   }
 
-  .nav-ext-icon {
-    font-size: 0.75rem;
-    opacity: 0.6;
-    margin-left: auto;
-    color: var(--primary-green);
-  }
-
   .nav-dropdown-menu {
     position: static;
     opacity: 1;
